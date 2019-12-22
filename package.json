@@ -1,0 +1,24 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Back-end web project",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuiTienDuy/Back-End.git"
+  },
+  "author": "Bui Tien Duy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuiTienDuy/Back-End/issues"
+  },
+  "homepage": "https://github.com/BuiTienDuy/Back-End#readme"
+}
