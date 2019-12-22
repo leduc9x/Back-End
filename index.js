@@ -1,9 +1,11 @@
-var express = require('express');
-var path = require('path');
+var express = require('express')
+var app = express()
+const PORT = 4000
 
-var app = express();
-app.use(express.static(path.join(__dirname, '/')));
+app.get('/', (req, res) => {
+  res.send('Running on main path')
+})
 
-app.listen(5000, function () {
-  console.log('started listen port', 5000);
+app.listen(PORT, function () {
+  console.log('started listen port', PORT);
 })
