@@ -1,5 +1,6 @@
 var express = require('express')
 var mysql = require('mysql')
+var jwt = require('jsonwebtoken')
 var bcrypt = require('bcrypt')
 var db = require('./../Database/database')
 
@@ -13,13 +14,14 @@ module.exports = {
       if (err) throw err
       else {
         if (result[0] != null) {
+          let token = jwt.sign({ userName: userName, passWord: result[0].matkhau }, 'WebProject')
           bcrypt.compare(passWord, result[0].matkhau, (err, respond) => {
             if (err) throw err
             else if (!respond) {
               res.status(401).json({ message: 'Wrong password. Please try again' })
             }
             else {
-              res.status(200).json({message: 'Successed'})
+              res.status(200).json(token)
             }
           })
         }

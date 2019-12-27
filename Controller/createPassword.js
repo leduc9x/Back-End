@@ -15,8 +15,11 @@ module.exports = {
       else {
         db.query(sqlHashPassword, [hash, userName], (err, result) => {
           if (err) throw err
-          else {
+          else if (result){
             res.status(200).json({message: 'Create successed'})
+          }
+          else {
+            res.status(400).json({message: 'Failed to create'})
           }
         })
       }
