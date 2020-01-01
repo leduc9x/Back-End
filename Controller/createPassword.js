@@ -8,7 +8,7 @@ module.exports = {
   post: (req, res) => {
     let secretNumber = req.body.secretNumber
     let userName = req.body.userName
-    let sqlHashPassword = 'UPDATE sinhvien SET matkhau = ? WHERE (msv = ?);'
+    let sqlHashPassword = 'UPDATE user SET password = ? WHERE (userName = ?);'
 
     bcrypt.hash(secretNumber, saltRounds, (err, hash) => {
       if (err) throw err

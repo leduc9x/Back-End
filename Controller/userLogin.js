@@ -8,20 +8,20 @@ module.exports = {
   post: (req, res) => {
     let userName = req.body.userName
     let passWord = req.body.passWord
-    let sql = 'Select * from sinhvien where msv = ?;'
+    let sql = 'Select * from user where userName = ?;'
 
     db.query(sql, userName, (err, result)  => {
       if (err) throw err
       else {
-        if (result[0] != null) {
-          let token = jwt.sign({ userName: userName, passWord: result[0].matkhau }, 'WebProject')
-          bcrypt.compare(passWord, result[0].matkhau, (err, respond) => {
+        if (result[0] !== null) {
+          let token = jwt.sign({ userName: userName, passWord: result[0].passWord }, 'Web')
+          bcrypt.compare(passWord, result[0].passWord, (err, respond) => {
             if (err) throw err
-            else if (!respond) {
-              res.status(401).json({ message: 'Wrong password. Please try again' })
+            else if (respond) {
+              res.status(200).json({ token, userName })
             }
             else {
-              res.status(200).json(token)
+              res.status(401).json({ message: 'Wrong password. Please try again' })
             }
           })
         }
