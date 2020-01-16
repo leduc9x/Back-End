@@ -14,6 +14,7 @@ const corsOption = {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors(corsOption))
+
 app.use(fileUpload())
 
 routes(app)
