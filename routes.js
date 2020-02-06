@@ -18,6 +18,7 @@ let createSchedule = require('./Controller/createSchedule')
 let createExam = require('./Controller/createExam')
 let unregisterRoom = require('./Controller/unRegisterRoom')
 let addStudents = require('./Controller/addStudents')
+let deleteStudent = require('./Controller/deleteStudent')
 
 module.exports = (app) => {
   app.route('/')
@@ -76,7 +77,10 @@ module.exports = (app) => {
 
   app.route('/unregisterRoom')
     .post(unregisterRoom.post)
-    
+
   app.route('/addStudents')
     .post(addStudents.post)
+
+  app.route('/deleteStudent')
+    .post(deleteStudent.post)
 }
